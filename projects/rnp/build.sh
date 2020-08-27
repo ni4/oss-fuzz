@@ -20,9 +20,7 @@ cd $SRC
 wget -qO- https://botan.randombit.net/releases/Botan-2.12.1.tar.xz | tar xJ
 cd Botan-2.12.1
 ./configure.py --prefix=/usr --cc-bin=$CXX --cc-abi-flags="$CXXFLAGS" \
-               --disable-modules=locking_allocator \
-               --unsafe-fuzzer-mode --build-fuzzers=libfuzzer \
-               --with-fuzzer-lib='FuzzingEngine'
+               --disable-modules=locking_allocator,tls,x509
 make -j$(nproc)
 make install
 
